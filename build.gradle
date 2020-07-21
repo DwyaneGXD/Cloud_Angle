@@ -1,0 +1,76 @@
+//声明gradle脚本自身需要的资源
+buildscript {
+    ext {
+        springBootVersion = '2.2.4.RELEASE'
+        springCloudVersion = 'Hoxton.SR5'
+    }
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+plugins {
+    id "io.spring.dependency-management" version "1.0.9.RELEASE"
+}
+
+//gradle版本
+task create(type: Wrapper) {
+    gradleVersion = '6.3'
+}
+
+allprojects {
+    group = 'com.dwyane.angle'
+    version = '1.0'
+
+    ext {
+        bootName = 'org.springframework.boot'
+        cloudName = 'org.springframework.cloud'
+    }
+}
+
+//子系统共用部分
+subprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+
+    //全局去除依赖
+    configurations {
+        compile.exclude module: 'spring-boot-starter-tomcat'
+    }
+
+    ext {
+        bootName = 'org.springframework.boot'
+        cloudName = 'org.springframework.cloud'
+    }
+
+    //java版本
+    sourceCompatibility = JavaVersion.VERSION_1_8
+
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+    //共用jar
+    dependencies {
+        //简化代码
+        "org.projectlombok:lombok"
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "${cloudName}:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+}
