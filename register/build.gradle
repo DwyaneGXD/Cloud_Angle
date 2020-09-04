@@ -1,0 +1,9 @@
+bootJar {
+    archiveFileName = 'angle-register.jar'
+    excludes = ['config/custom.properties']
+}
+
+dependencies {
+    implementation project(':core')
+    implementation "${cloudName}:spring-cloud-starter-netflix-eureka-server"
+}

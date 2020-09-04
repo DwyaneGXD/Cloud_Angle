@@ -1,0 +1,11 @@
+/**
+ * 解决 Execution failed for task ':gradle-core:bootJar 问题
+ * 引入 jar.enabled = true,bootJar.enabled = false
+ */
+jar.enabled = true
+bootJar.enabled = false
+
+dependencies {
+
+}
+

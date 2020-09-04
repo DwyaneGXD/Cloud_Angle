@@ -1,0 +1,10 @@
+bootJar {
+    archiveFileName = 'angle-driver.jar'
+    excludes = ['config/custom.properties']
+}
+
+dependencies {
+    implementation project(':core')
+    implementation "${cloudName}:spring-cloud-starter-netflix-eureka-client"
+    implementation "${bootName}:spring-boot-starter-web"
+}

@@ -1,0 +1,12 @@
+bootJar {
+    archiveFileName = 'angle-config.jar'
+    excludes = ['config/custom.properties']
+}
+
+dependencies {
+    implementation project(':core')
+    implementation "${cloudName}:spring-cloud-config-server"
+    implementation "${bootName}:spring-boot-starter-actuator"
+    implementation "${cloudName}:spring-cloud-starter-netflix-eureka-client"
+    implementation "${cloudName}:spring-cloud-starter-netflix-eureka-server"
+}
