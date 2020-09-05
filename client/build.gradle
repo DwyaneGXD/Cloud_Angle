@@ -1,10 +1,12 @@
 bootJar {
-    archiveFileName = 'angle-client.jar'
-    excludes = ['config/custom.properties']
+  archiveFileName = 'angle-client.jar'
+  excludes = ['config/custom.properties']
 }
 
 dependencies {
-    implementation project(':core')
-    implementation "${cloudName}:spring-cloud-starter-netflix-eureka-client"
-    implementation "${bootName}:spring-boot-starter-web"
+  implementation project(':core')
+  implementation "${cloudName}:spring-cloud-starter-netflix-eureka-client"
+  implementation "${bootName}:spring-boot-starter-web"
+  implementation "${cloudName}:spring-cloud-config-client"
+  implementation "${bootName}:spring-boot-starter-security"
 }
