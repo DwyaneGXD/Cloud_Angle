@@ -8,5 +8,6 @@ dependencies {
   implementation "${cloudName}:spring-cloud-starter-netflix-eureka-client"
   implementation "${bootName}:spring-boot-starter-web"
   implementation "${cloudName}:spring-cloud-config-client"
+  //做简单的安全和端点开发
   implementation "${bootName}:spring-boot-starter-security"
 }
